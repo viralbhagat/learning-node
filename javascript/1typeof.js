@@ -1,6 +1,6 @@
 "use strict";
 console.log("Primitive data types are: String, Number, Boolean, Null and Undefined")
-console.log("undefined is the value assigned to a variable that is not  intialized")
+console.log("undefined is the value assigned to a variable that is not  initialized")
 console.log(typeof "viral");
 console.log(typeof 123);
 console.log(typeof true);

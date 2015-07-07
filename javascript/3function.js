@@ -120,5 +120,86 @@ the global variable is considered a property of the global object.
  */
 
 
+/*
+ Even though this is typically assigned automatically, you can change its value to achieve different goals.
+ There are three function methods that allow you to change the value of this. (Remember that functions are objects, and objects can have methods,
+ so functions can, too.)
+ */
+
+
+// call method
+/*The first parameter of call() is the value to which this should be equal when the function is executed.
+All subsequent parameters are the parameters that should be passed into the function
+ */
+function sayNameForAll(label) {
+    console.log(label + ":" + this.name);
+}
+var person1 = {
+    name: "Nicholas"
+};
+var person2 = {
+    name: "Greg"
+};
+var name = "Michael";
+sayNameForAll.call(this, "global");// outputs "global:Michael"
+sayNameForAll.call(person1, "person1");// outputs "person1:Nicholas"
+sayNameForAll.call(person2, "person2");// outputs "person2:Greg"
+
+//apply method
+/* The apply() method works exactly the same as call() except that it accepts only two parameters:
+the value for this and an array or array-like object of parameters to pass to the function
+(that means you can use an arguments object as the second parameter)
+ */
+
+function sayNameForAll(label) {
+    console.log(label + ":" + this.name);
+}
+var person1 = {
+    name: "Nicholas"
+};
+var person2 = {
+    name: "Greg"
+};
+var name = "Michael";
+sayNameForAll.apply(this, ["global"]);      // outputs "person1:Michael"
+sayNameForAll.apply(person1, ["person1"]);  // outputs "person1:Nicholas"
+sayNameForAll.apply(person2, ["person2"]);  // outputs "person2:Greg"
+
+
+// bind method  was added in ECMAScript 5
+/*
+ The first argument to bind() is the this value for the new function.
+ All other arguments represent named parameters that should be permanently set in the new function.
+ You can still pass in any parameters that aren’t permanently set later.
+ */
+
+function sayNameForAll(label) {
+    console.log(label + ":" + this.name);
+}
+var person1 = {
+    name: "Nicholas"
+};
+var person2 = {
+    name: "Greg"
+};
+
+// create a function just for person1
+var sayNameForPerson1 = sayNameForAll.bind(person1);
+sayNameForPerson1("person1"); // outputs "person1:Nicholas"
+
+// create a function just for person2
+var sayNameForPerson2 = sayNameForAll.bind(person2, "person2");
+sayNameForPerson2(); // outputs "person2:Greg"
+
+// attaching a method to an object doesn't change 'this'
+person2.sayName = sayNameForPerson1;
+person2.sayName("person2"); // outputs "person2:Nicholas"
+
+
+/*
+ The last part of this example adds sayNameForPerson1() onto person2 with the name sayName.
+ The function is bound, so the value of this doesn’t change even though sayNameForPerson1 is now a function on person2.
+ The method still outputs the value of person1.name.
+ */
 
 

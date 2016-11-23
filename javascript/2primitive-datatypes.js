@@ -5,8 +5,8 @@ console.log(color1);
 console.log(color2);
 
 color1 = "blue";
-console.log(color1);
-console.log(color2);
+console.log(color1);//blue
+console.log(color2);//red
 
 
 

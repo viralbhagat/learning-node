@@ -1,13 +1,12 @@
 "use strict";
 console.log("Primitive data types are: String, Number, Boolean, Null and Undefined");
 
-console.log(typeof "viral");
-console.log(typeof 123);
-console.log(typeof true);
-console.log(typeof undefined);
+console.log('typeof "viral" = ' + typeof "viral");
+console.log('typeof 123 = ' + typeof 123);//number
+console.log('typeof true = ' + typeof true);//boolean
+console.log('typeof undefined = ' + typeof undefined);//undefined
 
-console.log("type of null is object")
-console.log(typeof null);
+console.log('typeof null = ' + typeof null);//object
 
 console.log(typeof [1,2]);
 console.log(typeof {});

@@ -1,6 +1,7 @@
-/*Internal properties are not accessible via code but rather define the behavior of code as it executes.
- ECMAScript defines multiple internal properties for objects in JavaScript,
- and these internal properties are indicated by double-square-bracket notation.
+/*
+ECMAScript defines multiple internal properties for objects in JavaScript.
+Internal properties are not accessible via code but rather define the behavior of code as it executes.
+And these internal properties are indicated by double-square-bracket notation.
 
  The [[Call]] property is unique to functions and indicates that the object can be executed. Because only functions have this property,
  the typeof operator is defined by ECMAScript to return "function" for any object with a [[Call]] property. */
